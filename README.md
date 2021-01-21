@@ -1,4 +1,3 @@
-# churnprediction
 # Churn Prediction for Customer Retention Program
 
 This report attempts to analyze existing customer data to predict whether the customer will port out the service in order to outline the customer retention program using machine learning algorithms.
@@ -35,8 +34,9 @@ PaymentMethod – The customer’s payment method (Electronic check, Mailed chec
 MonthlyCharges – The amount charged to the customer monthly
 TotalCharges – The total amount charged to the customer
 Churn - whether the customer churned or not (Yes or No)
-Exploratory Data Analysis:
-Dataset features: 
+
+# Exploratory Data Analysis:
+## 1. Dataset features: 
 19 predictors including: float64(2), int64(2), object(15) and target - Churn (Yes/ No)
 Check distribution of Yes/ No class in the Churn target: 73.5% and 26.5% Yes
 => The dataset is not too imbalance to be needed for adjustment
@@ -44,12 +44,13 @@ Check distribution of Yes/ No class in the Churn target: 73.5% and 26.5% Yes
 
 
 
-Data check - clean 
-2.1.Check null/empty data:
+## 2. Data check - clean 
+
+### 2.1.Check null/empty data:
 By using heatmap, there is no missing data presenting as NULL or NAN 
 Checking blank values in the dataset, there exist some blank value in the column “TotalCharges” -> Imputating with the median
 
-2.2. Check unique value in each column and those values
+### 2.2. Check unique value in each column and those values
 (gender) Unique_Value 2 ['Female' 'Male']
 (Partner) Unique_Value 2 ['Yes' 'No']
 (Dependents) Unique_Value 2 ['No' 'Yes']
@@ -68,15 +69,24 @@ Checking blank values in the dataset, there exist some blank value in the column
  'Credit card (automatic)']
 (Churn) Unique_Value 2 ['No' 'Yes']
 
-Visualization dataset:
+## 3.Visualization dataset:
 Categorize predictors into 3 group: 
 + #Demographic information: Gender, Partner, Dependents,SeniorCitizen
 + #Service information: 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity',  'OnlineBackup', 'DeviceProtection','TechSupport', 'StreamingTV', 'StreamingMovies'
 +#Payment information: 'Contract','PaperlessBilling','PaymentMethod'
 
+Finding
+Gender is not useful to predict the churn rate in this case
+If a person has a partner, there is less chance for them to give up on the service.
+If a person has dependents, there may be less chance for them to give up on the service.
+If a person is a senior, It is higher chance for them to give up on the service
+People with Fiber Optic Internet Service, No online security, no online backup, no device protection, no tech support have more chance to port out the service (churn)
+People with no internet service are less likely to port out
+Person with month-to-month payment has a much higher chance to quit the service
+Person with paperless billing and electronic check has a higher chance to quit the service
 
 
-Splitting Data: applying train_test_split(X, y, test_size, random_state, stratify) (70% train- 30% validation)
+## 4.Splitting Data: applying train_test_split(X, y, test_size, random_state, stratify) (70% train- 30% validation)
 
 Models and Evaluation
 Logistic Regression
@@ -115,15 +125,7 @@ precision    recall  f1-score   support
 weighted avg       0.80      0.81      0.80      2113
 
 
-Finding
-Gender is not useful to predict the churn rate in this case
-If a person has a partner, there is less chance for them to give up on the service.
-If a person has dependents, there may be less chance for them to give up on the service.
-If a person is a senior, It is higher chance for them to give up on the service
-People with Fiber Optic Internet Service, No online security, no online backup, no device protection, no tech support have more chance to port out the service (churn)
-People with no internet service are less likely to port out
-Person with month-to-month payment has a much higher chance to quit the service
-Person with paperless billing and electronic check has a higher chance to quit the service
+
  
  
 
