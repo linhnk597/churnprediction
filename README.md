@@ -8,13 +8,18 @@ Recently, many service providers, mobile apps or SaaS companies invest into cust
 
 # Technologies
 Data Tool: Python- Google Colab
+
 Analytics techniques:
+
 Supervised Learning: Binary Classification, predict whether the customers will port out the service.
+
 Models used: Logistic regression, Random Forest and XGBoost
 
 # Raw Data 
 customerID – Customer ID
+
 gender – Whether the customer is a male or a female
+
 SeniorCitizen – Whether the customer is a senior citizen or not (1, 0)
 Partner – Whether the customer has a partner or not (Yes, No)
 Dependents – Whether the customer has dependents or not (Yes, No)
