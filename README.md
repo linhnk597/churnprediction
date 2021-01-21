@@ -21,29 +21,50 @@ customerID – Customer ID
 gender – Whether the customer is a male or a female
 
 SeniorCitizen – Whether the customer is a senior citizen or not (1, 0)
+
 Partner – Whether the customer has a partner or not (Yes, No)
+
 Dependents – Whether the customer has dependents or not (Yes, No)
+
 tenure – Number of months the customer has stayed with the company
+
 PhoneService – Whether the customer has a phone service or not (Yes, No)
+
 MultipleLines – Whether the customer has multiple lines or not (Yes, No, No phone service)
+
 InternetService – Customer’s internet service provider (DSL, Fiber optic, No)
+
 OnlineSecurity – Whether the customer has online security or not (Yes, No, No internet service)
+
 OnlineBackup – Whether the customer has online backup or not (Yes, No, No internet service)
+
 DeviceProtection – Whether the customer has device protection or not (Yes, No, No internet service)
+
 TechSupport – Whether the customer has tech support or not (Yes, No, No internet service)
+
 StreamingTV – Whether the customer has streaming TV or not (Yes, No, No internet service)
+
 StreamingMovies – Whether the customer has streaming movies or not (Yes, No, No internet service)
+
 Contract – The contract term of the customer (Month-to-month, One year, Two year)
+
 PaperlessBilling – Whether the customer has paperless billing or not (Yes, No)
+
 PaymentMethod – The customer’s payment method (Electronic check, Mailed check, Bank transfer (automatic), Credit card (automatic))
+
 MonthlyCharges – The amount charged to the customer monthly
+
 TotalCharges – The total amount charged to the customer
+
 Churn - whether the customer churned or not (Yes or No)
 
 # Exploratory Data Analysis:
 ## 1. Dataset features: 
+
 19 predictors including: float64(2), int64(2), object(15) and target - Churn (Yes/ No)
+
 Check distribution of Yes/ No class in the Churn target: 73.5% and 26.5% Yes
+
 => The dataset is not too imbalance to be needed for adjustment
 
 
@@ -53,47 +74,80 @@ Check distribution of Yes/ No class in the Churn target: 73.5% and 26.5% Yes
 
 ### 2.1.Check null/empty data:
 By using heatmap, there is no missing data presenting as NULL or NAN 
+
 Checking blank values in the dataset, there exist some blank value in the column “TotalCharges” -> Imputating with the median
 
 ### 2.2. Check unique value in each column and those values
+
 (gender) Unique_Value 2 ['Female' 'Male']
+
 (Partner) Unique_Value 2 ['Yes' 'No']
+
 (Dependents) Unique_Value 2 ['No' 'Yes']
+
+
 (PhoneService) Unique_Value 2 ['No' 'Yes']
+
 (MultipleLines) Unique_Value 3 ['No phone service' 'No' 'Yes']
+
 (InternetService) Unique_Value 3 ['DSL' 'Fiber optic' 'No']
+
 (OnlineSecurity) Unique_Value 3 ['No' 'Yes' 'No internet service']
+
 (OnlineBackup) Unique_Value 3 ['Yes' 'No' 'No internet service']
+
 (DeviceProtection) Unique_Value 3 ['No' 'Yes' 'No internet service']
+
 (TechSupport) Unique_Value 3 ['No' 'Yes' 'No internet service']
+
 (StreamingTV) Unique_Value 3 ['No' 'Yes' 'No internet service']
+
 (StreamingMovies) Unique_Value 3 ['No' 'Yes' 'No internet service']
+
 (Contract) Unique_Value 3 ['Month-to-month' 'One year' 'Two year']
+
 (PaperlessBilling) Unique_Value 2 ['Yes' 'No']
+
 (PaymentMethod) Unique_Value 4 ['Electronic check' 'Mailed check' 'Bank transfer (automatic)'
- 'Credit card (automatic)']
+
+'Credit card (automatic)']
+
 (Churn) Unique_Value 2 ['No' 'Yes']
 
 ## 3.Visualization dataset:
+
 Categorize predictors into 3 group: 
+
 + #Demographic information: Gender, Partner, Dependents,SeniorCitizen
-+ #Service information: 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity',  'OnlineBackup', 'DeviceProtection','TechSupport', 'StreamingTV', 'StreamingMovies'
+
++ #Service information: 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity',  'OnlineBackup', 'DeviceProtection','TechSupport', 'StreamingTV', 
+'StreamingMovies'
+
 +#Payment information: 'Contract','PaperlessBilling','PaymentMethod'
 
 Finding
+
 Gender is not useful to predict the churn rate in this case
+
 If a person has a partner, there is less chance for them to give up on the service.
+
 If a person has dependents, there may be less chance for them to give up on the service.
+
 If a person is a senior, It is higher chance for them to give up on the service
+
 People with Fiber Optic Internet Service, No online security, no online backup, no device protection, no tech support have more chance to port out the service (churn)
+
 People with no internet service are less likely to port out
+
 Person with month-to-month payment has a much higher chance to quit the service
+
 Person with paperless billing and electronic check has a higher chance to quit the service
 
 
 ## 4.Splitting Data: applying train_test_split(X, y, test_size, random_state, stratify) (70% train- 30% validation)
 
-Models and Evaluation
+# Models and Evaluation
+
 Logistic Regression
    precision    recall  f1-score   support
 
